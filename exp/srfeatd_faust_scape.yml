@@ -1,0 +1,52 @@
+project: SRFeat
+gpu: 0
+seed: 0
+log_step: 10
+path_prefix: .
+log_dir: ${path_prefix}/exp/log
+train_ckpt: ''
+test_ckpt: ''
+skip_train: false
+eval_mode: true
+model:
+  name: DiffusionNet
+  in_channels: 3
+  out_channels: 128
+  block_width: 128
+  num_blocks: 4
+  num_eigenbasis: 128
+  dropout: false
+data:
+  data_root: ${path_prefix}/exp/data
+  batch_size: 1
+  num_workers: 2
+  train_type:
+  - faust
+  - scape
+  test_type:
+  - shrec19
+  train_augments:
+  - centering
+  - rotation
+  - noise/0.005/0.005
+  - scaling
+  test_augments:
+  - centering
+group: faust_scape_shrec19
+loss:
+  contrast_type: nce
+  contrast_weight: 1.0
+  num_pos: 1024
+  dirichlet_weight: 1.0
+  dirichlet_normalize: true
+  dirichlet_silent_steps: -1
+  spectral_dims:
+  - 30
+  reg_weight: 0.001
+  accum_step: 1
+optim:
+  lr: 0.001
+  epochs: 10
+  decay_step: 5
+  decay_gamma: 0.1
+  weight_decay: 0.0

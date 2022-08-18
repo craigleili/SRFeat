@@ -1,0 +1,16 @@
+easydict==1.9
+hydra-core==1.1.1
+joblib==1.0.1
+matplotlib==3.3.4
+numpy==1.19.2
+omegaconf==2.1.1
+open3d==0.10.0.0
+polyscope==1.2.0
+potpourri3d==0.0.4
+protobuf==3.20.1
+pynndescent==0.5.5
+robust-laplacian==0.2.2
+scikit-learn==0.23.2
+scipy==1.6.2
+tqdm==4.51.0
+wandb==0.12.4
